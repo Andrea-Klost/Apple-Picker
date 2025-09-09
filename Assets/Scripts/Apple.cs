@@ -11,6 +11,12 @@ public class Apple : MonoBehaviour {
         // Remove apples that fall off the screen
         if (transform.position.y < BottomY) {
             Destroy(this.gameObject);
+            
+            // Get reference to ApplePicker component of Main Camera
+            ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
+            // Call public AppleMissed() method
+            apScript.AppleMissed();
         }
+        
     }
 }

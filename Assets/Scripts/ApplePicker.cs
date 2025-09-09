@@ -1,27 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ApplePicker : MonoBehaviour {
     [Header("Inscribed")] 
     public GameObject basketPrefab;
-
     public int numBaskets = 3;
-    
-    // Height for the first basket 
-    public float basketBottomY = -14f;
-    
-    // Vertical space between baskets
-    public float basketSpacingY = 2f;
+    public float basketBottomY = -14f; // Height for the first basket  
+    public float basketSpacingY = 2f; // Vertical space between baskets 
+    public List<GameObject> basketList;
     
     void Start()
     {
         // Create a Basket numBaskets times
+        basketList = new List<GameObject>();
         for (int i = 0; i < numBaskets; i++) {
             GameObject tBasketGo = Instantiate<GameObject>(basketPrefab);
             Vector3 pos = Vector3.zero;
             pos.y = basketBottomY + (basketSpacingY * i); // Start at bottom and space based on spacing var
             tBasketGo.transform.position = pos;
+            basketList.Add(tBasketGo);
+        }
+    }
+
+    public void AppleMissed() {
+        // Destroy all apples
+        GameObject[] appleArray = GameObject.FindGameObjectsWithTag("Apple");
+        foreach (GameObject apple in appleArray) {
+            Destroy(apple);
+        }
+        
+        // Destroy a basket
+        int basketIndex = basketList.Count - 1; // Get index of last basket
+        GameObject basketGo = basketList[basketIndex]; // Get reference to that Basket GameObject
+        // Remove Basket from list and destroy the GameObject
+        basketList.RemoveAt(basketIndex);
+        Destroy(basketGo);
+        
+        // If there are no more baskets restart game
+        if (basketList.Count == 0) {
+            SceneManager.LoadScene("_Scene_0");
         }
     }
 }
