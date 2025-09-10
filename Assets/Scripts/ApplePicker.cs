@@ -15,6 +15,8 @@ public class ApplePicker : MonoBehaviour {
     
     void Start()
     {
+        gameOverButtons.SetActive(false); // hide game over ui
+        
         // Create a Basket numBaskets times
         basketList = new List<GameObject>();
         for (int i = 0; i < numBaskets; i++) {
