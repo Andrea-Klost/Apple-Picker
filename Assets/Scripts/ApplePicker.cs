@@ -10,6 +10,8 @@ public class ApplePicker : MonoBehaviour {
     public float basketBottomY = -14f; // Height for the first basket  
     public float basketSpacingY = 2f; // Vertical space between baskets 
     public List<GameObject> basketList;
+    public GameObject gameOverButtons; // Object that holds buttons that appear on game over
+    
     
     void Start()
     {
@@ -22,9 +24,15 @@ public class ApplePicker : MonoBehaviour {
             tBasketGo.transform.position = pos;
             basketList.Add(tBasketGo);
         }
+        
+        StatusText.Status = 1; // Set round to 1
     }
 
     public void AppleMissed() {
+        if (basketList.Count == 0) { // Skip if already at 0
+            return;
+        }
+        
         // Destroy all apples
         GameObject[] appleArray = GameObject.FindGameObjectsWithTag("Apple");
         foreach (GameObject apple in appleArray) {
@@ -37,10 +45,13 @@ public class ApplePicker : MonoBehaviour {
         // Remove Basket from list and destroy the GameObject
         basketList.RemoveAt(basketIndex);
         Destroy(basketGo);
+        StatusText.Status = numBaskets - basketList.Count + 1; // Update status to current round
         
-        // If there are no more baskets restart game
+        // If no more baskets set status to game over
+        // This should only run once since we return the start of this function if 0
         if (basketList.Count == 0) {
-            SceneManager.LoadScene("_Scene_0");
+            StatusText.Status = -1;
+            gameOverButtons.SetActive(true); // Set retry and quit buttons to active
         }
     }
 }
