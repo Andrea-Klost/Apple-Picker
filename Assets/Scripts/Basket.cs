@@ -41,5 +41,12 @@ public class Basket : MonoBehaviour {
             scoreCounter.score += 100;  // Increase score
             HighScore.TRY_SET_HIGH_SCORE(scoreCounter.score); // see if new score is a high score
         }
+        else if (collidedWith.CompareTag("Branch")) {
+            Destroy(collidedWith);
+            // Get reference to ApplePicker component of Main Camera
+            ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
+            // Call public AppleMissed() method
+            apScript.AppleMissed();
+        }
     }
 }

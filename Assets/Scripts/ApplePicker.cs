@@ -41,6 +41,12 @@ public class ApplePicker : MonoBehaviour {
             Destroy(apple);
         }
         
+        // Destroy all branches
+        GameObject[] branchArray = GameObject.FindGameObjectsWithTag("Branch");
+        foreach (GameObject branch in branchArray) {
+            Destroy(branch);
+        }
+        
         // Destroy a basket
         int basketIndex = basketList.Count - 1; // Get index of last basket
         GameObject basketGo = basketList[basketIndex]; // Get reference to that Basket GameObject
