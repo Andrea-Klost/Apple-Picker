@@ -30,7 +30,7 @@ public class ApplePicker : MonoBehaviour {
         StatusText.Status = 1; // Set round to 1
     }
 
-    public void AppleMissed() {
+    public void LoseBasket() {
         if (basketList.Count == 0) { // Skip if already at 0
             return;
         }
@@ -39,6 +39,12 @@ public class ApplePicker : MonoBehaviour {
         GameObject[] appleArray = GameObject.FindGameObjectsWithTag("Apple");
         foreach (GameObject apple in appleArray) {
             Destroy(apple);
+        }
+        
+        // Destroy all branches
+        GameObject[] branchArray = GameObject.FindGameObjectsWithTag("Branch");
+        foreach (GameObject branch in branchArray) {
+            Destroy(branch);
         }
         
         // Destroy a basket
