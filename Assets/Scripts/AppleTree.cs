@@ -32,16 +32,16 @@ public class AppleTree : MonoBehaviour
     void Start()
     {
         // Start dropping apples after 2 seconds
-        Invoke("DropApple", 2f);
+        Invoke("DropObject", 2f);
     }
 
-    void DropApple() {
+    void DropObject() {
         // Randomly choose if object dropped should be an apple or branch
         GameObject fallingObject = (UnityEngine.Random.value < dropBadObjectChance)
             ? Instantiate(branchPrefab)
             : Instantiate(applePrefab);         
         fallingObject.transform.position = transform.position; // Set apple's position to tree's position
-        Invoke("DropApple", appleDropDelay); // Drop another apple after defined delay
+        Invoke("DropObject", appleDropDelay); // Drop another apple after defined delay
     }
     
     void Update()

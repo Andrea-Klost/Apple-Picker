@@ -14,8 +14,8 @@ public class Apple : MonoBehaviour {
             
             // Get reference to ApplePicker component of Main Camera
             ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
-            // Call public AppleMissed() method
-            apScript.AppleMissed();
+            // Call public LoseBasket() method
+            apScript.LoseBasket();
         }
         
     }

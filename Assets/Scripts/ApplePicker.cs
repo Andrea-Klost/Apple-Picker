@@ -30,7 +30,7 @@ public class ApplePicker : MonoBehaviour {
         StatusText.Status = 1; // Set round to 1
     }
 
-    public void AppleMissed() {
+    public void LoseBasket() {
         if (basketList.Count == 0) { // Skip if already at 0
             return;
         }
