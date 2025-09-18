@@ -98,5 +98,10 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode 
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
+# Webgl Publisher
+/WebGL Builds
+webgl_sharing
+connectwebgl.zip
+
 # IDE Settings
 /.idea
