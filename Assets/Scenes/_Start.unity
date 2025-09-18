@@ -727,6 +727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuitButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3656015422598999284, guid: 897755591abddfc42ac01b08397389fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3656015422598999285, guid: 897755591abddfc42ac01b08397389fa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
