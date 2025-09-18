@@ -16,8 +16,7 @@ public class QuitButton : MonoBehaviour
         // If in editor need to use a different function
         #if UNITY_STANDALONE
         Application.Quit();
-        #endif
-        #if UNITY_EDITOR
+        #elif UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }
