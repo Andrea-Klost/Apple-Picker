@@ -102,6 +102,7 @@ InitTestScene*.unity*
 /WebGL Builds
 webgl_sharing
 connectwebgl.zip
+/ProjectSettings/Packages/com.unity.connect.share
 
 # IDE Settings
 /.idea
